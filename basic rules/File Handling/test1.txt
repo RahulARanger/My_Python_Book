@@ -1,0 +1,4 @@
+This is the First test .txt file 
+that i have used to python to read this for me
+--
+ok bye 

@@ -1,0 +1,13 @@
+import pandas
+print('Data Frames without Given Indexes: ')
+df=pandas.DataFrame([1,2,3,4,5,6,7,8,9,19])
+print(df)
+print()
+print('Data Frames with Given Indexes:  ')
+df = pandas.DataFrame([1,2,3,4,5,6,7,8,9,19], index=[49,48,47,46,45, 1, 2, 3, 4, 5])
+print(df)
+print('It\'s operations are: ')
+print(df.loc[49])
+print()
+print(df.iloc[0])
+print()

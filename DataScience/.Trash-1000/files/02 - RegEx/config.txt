@@ -1,0 +1,7 @@
+# this is a comment
+a   :     1     
+    foo   =     bar    
+this is an illegal line
+:
+c:      hello
+b  :100

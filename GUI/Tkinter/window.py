@@ -1,0 +1,10 @@
+from tkinter import *
+root=Tk()
+g=Toplevel()
+root.title('This is the main window')
+root.geometry('200x100')
+lbl=Label(g,text='Hello World!!!').pack()
+g.title('This is the sub-window')
+g.geometry('200x100')
+Label(root,text='Main Window').pack()
+root.mainloop()

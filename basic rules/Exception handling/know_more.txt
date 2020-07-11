@@ -1,0 +1,13 @@
+To know more exception handling in python check this website:
+         
+    * https://docs.python.org/3/tutorial/errors.html#raising-exceptions
+
+    * https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement
+
+    * https://stackoverflow.com/questions/5142418/what-is-the-use-of-assert-in-python
+
+    * https://docs.python.org/3/tutorial/errors.html#handling-exceptions
+
+    * https://docs.python.org/3/library/exceptions.html#bltin-exceptions
+
+    * https://doughellmann.com/blog/2009/06/19/python-exception-handling-techniques/
