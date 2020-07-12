@@ -1,5 +1,14 @@
-for _ in range(int(input())):
-    n=int(input())
-    a=[int(i) for i in input().split()]
-    b=[int(i) for i in input().split()]
-    
+import os, argparse
+from collections import *
+
+defaults = {'color': 'red', 'user': 'guest'}
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-u', '--user')
+parser.add_argument('-c', '--color')
+namespace = parser.parse_args()
+command_line_args = {k: v for k, v in vars(namespace).items() if v is not None}
+
+combined = ChainMap(command_line_args, os.environ, defaults)
+print(combined['color'])
+print(combined['user'])
