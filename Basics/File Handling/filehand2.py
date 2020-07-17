@@ -1,0 +1,5 @@
+hand=open('test1.txt')
+print(type(hand))
+inp=hand.read()
+print(type(inp))
+hand.close()

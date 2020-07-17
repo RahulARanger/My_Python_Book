@@ -1,0 +1,2 @@
+Now the File has the Contents in it
+        Doc strings makes it easy to write paragraphs of the data 
