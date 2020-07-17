@@ -1,6 +1,0 @@
-n,m=input().split()
-n,m=int(n),int(m)
-arr=input()
-a=input()
-b=input()
-print(b)
