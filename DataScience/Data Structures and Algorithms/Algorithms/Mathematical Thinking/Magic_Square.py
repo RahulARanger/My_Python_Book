@@ -31,4 +31,6 @@ def fill_it(table,n):
         table[starting_x][starting_y]=number
         number+=1    
     return table
-print_matrix(fill_it([],int(input('Enter the Number: '))))    
+if __name__=='__main__':
+    print('Magic Square:     ')
+    print_matrix(fill_it([],int(input('Enter the Number: '))))    
