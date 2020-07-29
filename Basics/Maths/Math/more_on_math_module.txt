@@ -1,0 +1,5 @@
+Here are the Links Where there is a list of predefined methods and Constants in it: 
+
+                    * https://www.w3schools.com/python/module_math.asp
+ 
+                    * https://docs.python.org/3/library/math.html
