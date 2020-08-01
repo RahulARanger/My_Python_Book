@@ -1,3 +1,4 @@
+import time
 def mult(a,b):
     new_eq={}
     for i in a:
@@ -20,12 +21,14 @@ def print_eq(eq):
         if i!=0:print(' + ' if eq[lst[i]]>0 else ' - ',end='')
         if lst[i]==0:print('{}'.format(eq[lst[i]]))
         else:print('{}X^{}'.format(eq[lst[i]],lst[i]),end='')
-a,b=get_eq('A'),get_eq('B')
-print('The Given Equations are: ')
-print_eq(a),print_eq(b)
-print('The Product of the two equations are :')
-print_eq(mult(a,b))
-
+if __name__=='__main__':
+    a,b=get_eq('A'),get_eq('B')
+    print('The Given Equations are: ')
+    print_eq(a),print_eq(b)
+    check=time.time()
+    print('The Product of the two equations are :')
+    print_eq(mult(a,b))
+    print('Time Consumed is:',time.time()-check)
 # worst case is O(n^2) when size of both eq is same and not equal to 1
 # best case is O(1) when size is 1 and another ones is 1
 # Time Complexity of this Algorithm is O(n)<=y<=O(n^2) (where y is this time complexity) 
