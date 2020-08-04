@@ -1,41 +1,67 @@
 import sys
-n=int(input())
+def print_it(path,n):
+    for i in range(n):
+        for j in range(n):
+            pt=[i,j]
+            if pt in path:
+                print('q',end=' ')
+            else:print('_',end=' ')
+        print()
+n=int(input('Enter the length of the chessboard:'))
 if n>1 and n<4:
     print('Not Possible')
     sys.exit(0)
 if n==1:
-    print('q')
+    print('q')    
     sys.exit(0)
-check=[[0,i] for i in range(n-1,-1,-1)]
-check.append(None)
-print(check)
-consider=[check[-2]]
-while True:
-    index=consider[-1][0]+1
-    pts=[]
+board=[]
+def check(path,pt):
+    for i in path:
+        if pt[1]==i[1]:return False
+        x_=abs(pt[0]-i[0])
+        y_=abs(pt[1]-i[1])
+        if x_==y_:return False
+    return True    
+path=[]
+axis=[]
+i=0
+while i<n:
+    choices=[]
     for j in range(n):
-        pt=[index,j]
-        for k in range(len(consider)):
-            wow=consider[k]
-            _=abs(wow[0]-pt[0])
-            __=abs(wow[1]-pt[1])
-            if _==__ or wow[1]==pt[1]:break
-            if k==len(consider)-1:pts.append(pt)
-    #print(pts)
-    if len(pts)!=0:
-        pts.reverse()
-        check.extend(pts)
-        check.append(None)
+        pt=[i,j]
+        if i==0:
+            choices.append(pt)
+        else:
+            if check(path,pt):
+                choices.append(pt)
+            else:pass
+    if len(choices)!=0:
+        path.append(choices[0])
+        axis.append(choices)  
+        i+=1
     else:
-        flags=[]
-        while True:
-            if check[-1] is None:
-                flags.append(False)
+        if len(axis[-1])==1 and len(axis[-2])==1:
+            while True:
+                if len(axis[-1])==1:
+                    axis.pop()
+                    path.pop()
+                else:
+                    del axis[-1][0]
+                    path.pop()
+                    path.append(axis[-1][0])   
+                    i=path[-1][0]+1 
+                    break
+        else:
+            path.pop()
+            if len(axis[-1])==1:
+                axis.pop()
+                del axis[-1][0]    
+                path.pop()
+                i-=1
             else:
-                flags.append(True)
-            if flags[-1]==False and flags[-2]==True:
-                
-    consider.append(check[-2])
-    print(check,consider)
+                del axis[-1][0]    
+            path.append(axis[-1][0])
+    if len(path)==n:break
+print_it(path,n)
 
-
+# This is the better algorithm than the previous ones (can execute within 10 sec for n=20)
