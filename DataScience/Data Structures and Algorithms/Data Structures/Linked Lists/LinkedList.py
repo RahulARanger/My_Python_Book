@@ -88,11 +88,23 @@ class Node:
             for i in range(1,index-1):
                 check=check.address
             check.address=check.address.address
-            Node.index-=1
+            Node.index-=13
+# ! delete all elements
+def popall(self):
+    check=self.address
+    del check
+    check=self
+    check.data=None
+    check.address=None
+# TODO: Sorting with the merge Sort
+def sort_This(self):
+    pass
 # TODO: A Constructor Function.
-    def __init__(self):
+    def __init__(self,data=None):
         self.data=None
         self.address=None
+        if type(data) is not None:
+            pass
 if __name__=='__main__':
     a=Node()
     n=int(input('Enter the Number of the Elements: '))
