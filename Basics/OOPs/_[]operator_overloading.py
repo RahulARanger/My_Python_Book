@@ -10,4 +10,6 @@ class test:
 a=test()
 print(a)
 a[6]=6
+# we can even slice it 
+print(a[3:6])
 print(a)
