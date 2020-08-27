@@ -90,15 +90,51 @@ class Node:
             check.address=check.address.address
             Node.index-=13
 # ! delete all elements
-def popall(self):
-    check=self.address
-    del check
-    check=self
-    check.data=None
-    check.address=None
-# TODO: Sorting with the merge Sort
-def sort_This(self):
-    pass
+    def popall(self):
+        check=self.address
+        del check
+        check=self
+        check.data=None
+        check.address=None
+# ! setting the values
+    def __setitem__(self,key,value):
+        check=self
+        for i in range(key):
+            check=check.address
+        check.data=value
+# TODO: Sorting with the merge sort
+    def __getitem__(self,key):
+        check=self
+        for i in range(key):
+            check=check.address
+        return check.data
+    def getitem(self,key):
+        check=self
+        for i in range(key):
+            check=check.address
+        return check
+    def sort_this(self):
+        start=0
+        end=Node.index
+        self.sort(start,end)
+    def sort(self,start,end):
+        length=end-start+1
+        print(start,end)
+# TODO : Sorting with bubble sort
+    def sort_b(self):
+        check=self
+        for i in range(Node.index):
+            for j in range(Node.index):
+                if i==j:continue
+                if check[i]>check[j]:
+                    print(check[i],check[j])
+                    a=check[i]
+                    check[i]=check[j]
+                    check[j]=a
+                    print(check[i],check[j])
+        print(check)     
+    def length(self):
+        return Node.index
 # TODO: A Constructor Function.
     def __init__(self,data=None):
         self.data=None
@@ -111,10 +147,6 @@ if __name__=='__main__':
     for i in range(n):
         a.append(int(input('Enter the value: ')))
     print(a)    
-    search=int(input('Enter the Value to search for: '))
-    result=a.search(search)
-    if result==-1:print('The element is not found in the list')
-    else:
-        print('The Element is at the index {} '.format(result+1))
-    a.delete(int(input('Enter the index Number to delete: ')))
+    print(a[2])
+    a.sort_b()
     print(a)

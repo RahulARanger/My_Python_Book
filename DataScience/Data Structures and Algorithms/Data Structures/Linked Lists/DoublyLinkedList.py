@@ -1,76 +1,58 @@
-
-# * Rem 
-# ! Actually to append a element in the doubly linked list we need at least need to have length of the list=1
 class Node:
     index=0
-    back=None # * stores the location of the last object in the list
-    def __init__(self):
+    def __init__(self,lst=None):
         self.data=None
-        self.prev=None
         self.next=None
-# TODO: for printing in reverse or normal order
-    def __str__(self,reverse=False):
-        combine=''
-        if not reverse:
-            check=self
-            combine+=str(check.data)+' '
-            for i in range(Node.index-1):
-                check=check.next
-                combine+=str(check.data)+' '
-        else:
-            back=Node.back
-            combine+=str(back.data)+ ' '
-            for i in range(Node.index-1):
-                back=back.prev
-                combine+=str(back.data)+ ' '
-        return combine
-# TODO: to insert at the first position
-    def appendleft(self,data):
-        if Node.index==0:
-            self.append(data)
-        else:
-            new=Node()
-            check=self
-            new.data=check.data
-            new.prev=check
-            new.next=check.next
-            check.next.prev=new
-            check.data=data
-            check.next=new
-            Node.index+=1
-# TODO: to insert the node at the end of the list
+        self.prev=None
+        if lst is not None:
+            lst=list(lst)
+            Node.index=0
+            self.convert(lst)
+    # TODO: Returns the index of the element 10  print(a.find(10))
+    def find(self,value):
+        for i in range(Node.index):
+            if self[i]==value:return i
+        return -1
+    # TODO: coverts a list,set,string (any type that can be converted to list) is now Node() type
+    def convert(self,lst):
+        for i in lst:
+            self.append(i)
+    # TODO: appends the data of user type (so multiple types) can be entered/stored through this form
     def append(self,data):
+        check=self
         if Node.index==0:
-            Node.back=self
-            self.data=data
+            check.data=data
         else:
-            check=self
             for i in range(Node.index-1):
                 check=check.next
             new=Node()
             new.data=data
             new.prev=check
-            new.next=None
             check.next=new
-            Node.back=new
         Node.index+=1
-# TODO: to search for the element in the list
-    def search(self,data):
+    # TODO: prints the doubly linked lists
+    def __str__(self):
+        collect=''
         check=self
-        if data==check.data:return 1
+        collect+=str(check.data)+' '
         for i in range(Node.index-1):
             check=check.next
-            if check.data==data:return i+2
-        return -1    
-    def delete(self,index):pass
+            collect+=str(check.data)+' '
+        return collect
+    # ? Overloaded [] to know the nth element
+    def __getitem__(self,key):
+        check=self
+        for i in range(key):
+            check=check.next
+        return check.data
+    # ? to modify the nth value of the list
+    def __setitem__(self,key,value):
+        check=self
+        for i in range(key):
+            check=check.next
+        check.data=value
 if __name__=='__main__':
     a=Node()
-    for i in range(int(input('Enter the Number of elements: '))):
-        a.append(int(input('Enter the value of the element: ')))
-    print(a)
-    print(a.__str__(reverse=True))
-    result=a.search(int(input('Enter the value of the element to search for: ')))
-    if result!=-1:
-        print('The Element is found at {} '.format(result))
-    else:
-        print('Not found')
+    a=Node([int(i) for i in input('Enter the Numbers: ').split()])
+    
+# ! we can't actually slice right now unless we do some coding for that ( print(a[4:5]))
