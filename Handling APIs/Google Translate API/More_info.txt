@@ -1,0 +1,7 @@
+? To know more about the google translate API refer this Documentaions:
+
+* https://stackabuse.com/text-translation-with-google-translate-api-in-python/
+
+* https://pypi.org/project/googletrans/
+
+* https://py-googletrans.readthedocs.io/en/latest/
