@@ -1,6 +1,4 @@
 # This is the answer to the week4 assignment question1 
-
-# ? This is just for understanding the binary search algo.
 def bs(lst,start,end,k):
     mid=start+end
     mid//=2
