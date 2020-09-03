@@ -1,152 +1,69 @@
 class Node:
-    index=0
-# TODO: Just a Printing method (Transversal Operation)
-    def __str__(self):
-        check=self
-        collect=str()
-        collect=str(check.data)+' '
-        for i in range(Node.index-1):
-            check=check.address
-            collect+=str(check.data)+' '
-        return collect 
-# !deletion Operation
-    def pop(self):
-        if Node.index==0:
-            print('List is Empty')
-            return None
-        elif Node.index==1:
-            self.data=None
-            self.address=None
-        else:
-            check=self
-            for i in range(1,Node.index-1):
-                check=check.address
-            del check.address
-            check.address=None
-        Node.index-=1
-# !deletion operation
-    def popleft(self):
-        if Node.index==0:
-            print('The List is Empty')
-            return None
-        elif Node.index==1:
-            self.data=None
-            self.address=None
-        else:
-            check=self
-            if check.address is not None:
-                check.data=check.address.data
-                check.address=check.address.address
-        Node.index-=1    
-# !insertion operation
+    def __init__(self,lst=None):
+        self.length=0
+        self.address,self.data=None,None
     def append(self,data):
-        if Node.index==0:
+        if self.length==0:
             self.data=data
         else:
             check=self
-            while check.address is not None:
+            for i in range(self.length-1):
                 check=check.address
             new=Node()
             new.data=data
             check.address=new
-        Node.index+=1    
-# !searching operation
-    def search(self,value):
+        self.length+=1
+    def __str__(self):
+        lst=[self.data]
         check=self
-        if check.data==value:return 0
-        for i in range(1,Node.index):
+        for i in range(self.length-1):
             check=check.address
-            if check.data==value:return i
-        return -1    
-# !insertion operation
-    def appendleft(self,value):
+            lst.append(check.data)
+        return str(lst)
+    def __getitem__(self, key):
         check=self
-        new=Node()
-        new.data=check.data
-        new.address=check.address
-        check.address=new
-        check.data=value
-# !insertion operation
-    def insert(self,index,value):
-        if index==1:
-            self.appendleft(value)
-        else:
-            left=self
-            for i in range(1,index):left=self.address
-            print(left.data,left.address.data)
-            right=Node()
-            right.data=value
-            right.address=left.address
-            left.address=right
-        Node.index+=1
-# !deletion operation
-    def delete(self,index):
-        if index==Node.index:self.pop()
-        elif index==1:self.popleft()
-        else:
-            check=self
-            for i in range(1,index-1):
-                check=check.address
-            check.address=check.address.address
-            Node.index-=13
-# ! delete all elements
-    def popall(self):
-        check=self.address
-        del check
-        check=self
-        check.data=None
-        check.address=None
-# ! setting the values
+        for i in range(self.length-1):
+            check=check.address
+        ans=check.data
+        return ans
     def __setitem__(self,key,value):
         check=self
         for i in range(key):
             check=check.address
         check.data=value
-# TODO: Sorting with the merge sort
-    def __getitem__(self,key):
-        check=self
-        for i in range(key):
-            check=check.address
-        return check.data
-    def getitem(self,key):
-        check=self
-        for i in range(key):
-            check=check.address
-        return check
-    def sort_this(self):
-        start=0
-        end=Node.index
-        self.sort(start,end)
-    def sort(self,start,end):
-        length=end-start+1
-        print(start,end)
-# TODO : Sorting with bubble sort
-    def sort_b(self):
-        check=self
-        for i in range(Node.index):
-            for j in range(Node.index):
-                if i==j:continue
-                if check[i]>check[j]:
-                    print(check[i],check[j])
-                    a=check[i]
-                    check[i]=check[j]
-                    check[j]=a
-                    print(check[i],check[j])
-        print(check)     
-    def length(self):
-        return Node.index
-# TODO: A Constructor Function.
-    def __init__(self,data=None):
-        self.data=None
-        self.address=None
-        if type(data) is not None:
-            pass
+    def delete(self,key=None):
+        if key is None: key=self.length-1
+        if key>self.length or self.length==0:
+            print('Not enough size')
+            return None
+        elif self.length==1:
+            self.data=None
+        elif key==self.length-1:
+            check=self
+            for i in range(self.length-2):
+                check=check.address
+            check.address=None
+        else:
+            check=self
+            for i in range(key):
+                check=check.address
+            bye=check
+            check=self
+            for i in range(key+1):
+                check=check.address
+            hi=check
+            bye.data=hi.data
+            bye.address=hi.address
+        self.length-=1
 if __name__=='__main__':
     a=Node()
-    n=int(input('Enter the Number of the Elements: '))
-    for i in range(n):
-        a.append(int(input('Enter the value: ')))
-    print(a)    
-    print(a[2])
-    a.sort_b()
+    a.append(6)
+    a.append(9)
     print(a)
+    b=Node()
+    b.append(6)
+    b.append(8)
+    b.append(3)
+    print(a,b)
+    b.delete(2)
+    print(b)

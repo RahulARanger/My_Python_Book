@@ -1,41 +1,31 @@
-class Queue:
-    index=0
-    def __init__(self,data=None,size=1000):
-        self.size=size
-        if data is None:self.lst=[]
-        elif type(data)==list:
-            self.lst=data.copy()
-            Queue.index=len(self.lst)
+class Entity:
+    def __init__(self,lst=None):
+        self.length=0
+        self.lst=[]
+        if lst is not None:
+            for i in lst:
+                self.enqueue(i)
     def enqueue(self,data):
-        if self.size==Queue.index:
-            print('Queue is Full (Queue Overflow)')
-            return None
         self.lst.append(data)
-        Queue.index+=1
-    def getFront(self):
-        if Queue.index>0:return self.lst[0]
+        self.length+=1
+    def dequeue(self):
+        if self.length>0:del self.lst[0]
         else:
-            print('Queue is Empty!!!')
-            return None
+            print('Queue Underflow')
+    def getFront(self):
+        return self.lst[-1]
+    def getRear(self):
+        return self.lst[0]
     def __str__(self):
-        combine=' '
-        for i in self.lst:
-            combine+=str(i)+' '
-        return combine
-    def deque(self):
-        if Queue.index==0:
-            print('Empty Queue!!! (Queue Underflow)')
-            return None
-        del self.lst[0]
-        Queue.index-=1
+        return str(self.lst)
 if __name__=='__main__':
-    a=Queue([1,2,3,4,5,6],size=20)
-    a.enqueue(7)
+    a=Entity()
+    a.enqueue(6)
+    a.enqueue(9)
+    a.enqueue(4)
+    a.enqueue(2)
+    a.enqueue(0)
     print(a)
-    for i in range(3):
-        a.deque()
+    a.dequeue()
+    a.dequeue()
     print(a)
-    a.deque()
-    print(a)
-    for i in range(3):
-        a.deque()
