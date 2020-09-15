@@ -1,48 +1,38 @@
-class Plate:
-    index=0
-    def __init__(self,maxsize=100):
+
+# ? Stack follows LIFO (last in first out) algo.
+class Stack:
+    def __init__(self,lst=None):
+        self.index=0
         self.lst=[]
-        self.max=maxsize
-    def push(self,data):
-        if Plate.index==self.max:
-            print('The Stack is Full!!! (Stack Overflow)')
-        else:
-            self.lst.append(data)
-            Plate.index+=1
+        if lst is not None:
+            for i in lst:
+                self.append(i)
+    def append(self,data):
+        # ! Normally when the number of elements exceeds the limit then it is stack overflow
+        self.lst.insert(0,data)
+    def len(self):
+        return len(self.lst)
     def pop(self):
-        if Plate.index==0:
-            print('Stack is already Empty (Stack Underflow) ')
-        else:
-            self.lst.pop()
-            Plate.index-=1
-    def __str__(self,ch=' '):
-        combine=''
+        try:
+            store=self.lst[0]
+            del self.lst[0]
+            return store
+        except:
+            print('Stack UnderFlow')
+            assert(False)
+    def getHead(self):
+        return self.lst[0]
+    def __str__(self):
+        print('|',end=' ')
         for i in self.lst:
-            combine+=str(i)+ch
-        return combine
-    def isEmpty(self):
-        return True if Plate.index==0 else False
-    def isFull(self):
-        return True if Plate.index==self.max else False
-    def top(self):
-        return self.lst[-1]
-    def clear(self):
-        Plate.index=0
-        self.lst.clear()
-    def topAndPop(self):
-        if Plate.index==0:
-            print('Stack is Already Empty (stack UnderFlow')
-        else:
-            r=self.lst[-1]
-            self.lst.pop()
-            return r
+            print(i,end=' ')
+            print('|',end=' ')
+        return ''
+    def toList(self):
+        return self.lst
 if __name__=='__main__':
-    a=Plate(6)
-    for i in range(1,7):
-        a.push(i)
-    print(a)
-    a.push(7)
-    for i in range(1,7):
-        a.pop()
+    a=Stack(['*','('])
     print(a)
     a.pop()
+    print(a)
+    

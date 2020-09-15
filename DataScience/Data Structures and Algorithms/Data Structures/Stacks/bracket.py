@@ -1,31 +1,28 @@
-class Plate:
-    index=0
-    def __init__(self,data=None):
-        self.lst=[]
-        if data is None:
-            self.lst=[]
-        else:
-            for i in data:
-                self.append(i)
-    def append(self,data):
-        if data in '({)}[]':
-            self.lst.append(data)
-        else:return None
-        Plate.index+=1
-    def __str__(self):
-        return str(self.lst)
-    def check(self):
-        test={'{':0,'[':0,'(':0}
-        for i in self.lst:
-            if i in '{[(':test[i]+=1
-            else:
-                if i=='}':test['{']-=1
-                elif i==']':test['[']-=1
-                else:test['(']-=1
-        return True if sum(list(test.values()))==0 else False
+from Stack import *
+import re
+class Checker(Stack):
+    def __init__(self,exp):
+        self.exp=exp
+        super().__init__(list(exp))
+        self.check=list(reversed(self.toList()))
+    def test(self):
+        pairs={'}':'{',']':'[',')':'('}
+        bracs=Stack()
+        for i in range(len(self.check)):
+            if self.check[i] in '{([':
+                bracs.append(self.check[i])
+            elif self.check[i] in '}])':
+                if bracs.getHead()==pairs[self.check[i]]:
+                    bracs.pop()
+                else:return False,i
+        if bracs.len()!=0:return False,bracs.len()-1
+        return True,0
+
 if __name__=='__main__':
-    data=input('String: ')
-    lst=[i for i in data]
-    a=Plate(lst)
-    print(a)
-    print('{}Correct Expression'.format('' if a.check() else 'In'))
+    # ! This program only checks whether number of opening and closing brackets matches
+    a=Checker(input('Enter the Expression to Check: '))
+    result,index=a.test()
+    if result:
+        print('expression is Valid in terms of bracket arrangement and numberring (syntactically)')
+    else:
+        print('Please Check the Expression at:',index+1)
