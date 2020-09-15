@@ -1,45 +1,42 @@
-class Node:
-    index=0
-    def __init__(self,data=None):
+class Queue:
+    def __init__(self,lst=None):
         self.data=None
-        self.address=None
-    def enqeue(self,data):
-        if Node.index==0:
+        self.next=None
+        self.index=0
+        if lst is not None:
+            for i in lst:self.append(i)
+    def append(self,data):
+        if self.index==0:
             self.data=data
         else:
             check=self
-            while check.address is not None:
-                check=check.address
-            new=Node()
+            for i in range(self.index-1):
+                check=check.next
+            new=Queue()
             new.data=data
-            check.address=new
-        Node.index+=1 
-    def deque(self):
-        if Node.index==0 or Node.index==1:
-            self.data,self.address=None
+            check.next=new
+        self.index+=1
+    def pop(self):
+        if self.index==0:
             print('Queue Underflow')
+            assert False
         else:
-            check=self
-            check.data=check.address.data
-            check.address=check.address.address
-            Node.index-=1
+            if self.index==1:self.data=None
+            else:
+                self.data=self.next.data
+                self.next=self.next.next
+            self.index-=1
     def __str__(self):
-        check=self
-        collect=str()
-        collect=str(check.data)+' '
-        for i in range(Node.index-1):
-            check=check.address
-            collect+=str(check.data)+' '
-        return collect 
+        lst,check=[],self
+        for i in range(self.index-1):
+            lst.append(check.data)
+            check=check.next
+        lst.append(check.data)
+        return str(lst)
 if __name__=='__main__':
-    a=Node()
-    for i in range(1,7):
-        a.enqeue(i)
+    a=Queue()
+    a.append(2)
+    a.append(3)
     print(a)
-    a.deque()
-    a.deque()
-    a.deque()
-    a.deque()
-    print(a)
-    a.deque()
+    a.pop()
     print(a)
