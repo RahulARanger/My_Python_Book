@@ -1,0 +1,4 @@
+
+TODO: To generate the colors: we can use online color generator https://rgbcolorcode.com/
+
+* Tkinter GUI mostly uses hex code so use that as a string 
