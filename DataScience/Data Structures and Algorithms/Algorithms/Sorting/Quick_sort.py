@@ -1,27 +1,37 @@
-def quick_sort(lst,start,end):
-    length=end-start+1
-    if length<=1:return
-    else:
-        pivot=start
-        left=pivot+1
-        right=end
-        flag=True
-        
-        while right>=left:
-            if flag and lst[left]<=lst[pivot]:
-                left+=1
-                if left>=length:break
-            elif lst[pivot]<lst[left]:flag=False
-            if not flag and lst[right]>=lst[pivot]:
-                right-=1
-            elif lst[right]<lst[pivot]:
-                flag=True
-                if left>=length:break
-                lst[left],lst[right]=lst[right],lst[left]
-        lst[pivot],lst[right]=lst[right],lst[pivot]   
-        quick_sort(lst,start,right-1)
-        quick_sort(lst,right+1,end)
-if __name__=='__main__':
-    lst=[int(i) for i in input().split()]
-    quick_sort(lst,0,len(lst)-1)
+def qsort(lst,s,e):
+    len=(e-s)+1    
+    if len<=1:
+        return None    
     print(lst)
+    pp=s
+    sp=s+1
+    ep=e
+    flag=True
+    while True:        
+        print(sp,ep,pp,flag)
+        if sp>ep: 
+            lst[ep],lst[pp]=lst[pp],lst[ep]
+            pp=ep
+            break
+        if flag:
+            if lst[pp]>=lst[sp]:
+                sp+=1
+            else:
+                flag=False
+        else: 
+            if lst[pp]<=lst[ep]:
+                ep-=1
+            else:
+                lst[ep],lst[sp]=lst[sp],lst[ep]                
+                flag=True
+    print(pp,s,e)
+    if pp-1>=0:
+        print(pp)
+        qsort(lst,s,pp-1)
+    if pp+1<=e:
+        print(pp+1)
+        qsort(lst,pp+1,e)
+if __name__=='__main__':
+    a=[int(i) for i in input('Enter the Numbers: ').split()]
+    qsort(a,0,len(a)-1)
+    print(a)
