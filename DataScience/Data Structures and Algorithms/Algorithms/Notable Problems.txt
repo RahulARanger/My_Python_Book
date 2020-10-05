@@ -1,0 +1,8 @@
+! This is are the problems where i drenched my time for this
+
+
+* 1. Largest Single Number from the Smaller Numbers: https://github.com/RahulARanger/My_Python_Book/blob/master/DataScience/Data%20Structures%20and%20Algorithms/Algorithms/Greedy%20Algorithms/largest_num_from_digits.py
+
+* 2. Finding the number of ranges does the point can go into it: 
+
+* 3. find the number of pairs (ai,aj) where ai>aj and i<j: 
