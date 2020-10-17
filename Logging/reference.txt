@@ -1,0 +1,7 @@
+
+ ? What is Logging for that refer this: https://docs.python.org/3/howto/logging.html#logging-basic-tutorial
+ 
+
+ TODO: For short and sweet reference use this: https://realpython.com/python-logging/
+
+ TODO: Official Documentation: https://docs.python.org/3/library/logging.html
