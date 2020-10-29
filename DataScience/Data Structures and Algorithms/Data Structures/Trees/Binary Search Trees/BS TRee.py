@@ -1,5 +1,6 @@
 
-# TODO: to convert sorted array to the BS Tree it takes O(n) time complexity
+# ? ALL transversals consume time cmplexity of O(n)
+# insert() and delte() and predesccor and successor requires O(height of the tree)
 # ! but to convert unsorted to BS Tree it takes O(logn) time complexity
 class Node:
     def __init__(self,value,parent=None):
@@ -28,6 +29,7 @@ class Tree:
             else:
                 start=start.left
     def find(self,key):
+        # * depends on the height of the tree 
         start=self.head
         while True:
             if start is None:return False
@@ -46,6 +48,7 @@ class Tree:
         for i in self.lst:
             self.insert(i) 
     def insert(self,data):
+        # * Time Complexity: O(height of the tree)
         if self.head is None:
             self.head=Node(data)
             return 
