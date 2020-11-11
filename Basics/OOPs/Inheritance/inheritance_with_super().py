@@ -29,7 +29,7 @@ class teacher(intro):
     def __init__(self,Person='Teacher'):
         super().__init__(Person)
     def describe_yourself(self):
-         super().describe_yourself()    
+        super().describe_yourself()    
 a=student()
 a.introduce()
 b=teacher()
