@@ -1,0 +1,6 @@
+
+TODO: Some Reliable Sources: 
+
+    * http://zetcode.com/gui/pyqt5/introduction/
+
+        

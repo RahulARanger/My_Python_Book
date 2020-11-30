@@ -1,7 +1,6 @@
 import subprocess
 from tkinter import filedialog
 import os
-import re
 file_name=filedialog.askopenfilename(title='Select Files',filetypes=[('Python Files','*.py')],initialdir=os.getcwd())
 file_name='python '+'\"'+file_name+'\"'
 print(file_name)
