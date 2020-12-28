@@ -1,1 +1,2 @@
-SpecialModules/copy PRE/__pycache__/
+*.vscode/
+*.__pycache__/

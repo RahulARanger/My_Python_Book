@@ -1,17 +1,17 @@
 def check(func):
-    def ohho():
-        print('This is a Decorator Function')
+    print('se no~')
+    def call_this():
         func()
-    return ohho
+        print('Called a Wrapper Function')
+    print('bye!')
+    return call_this
 
-def modified_func():
-    print('imma gonna get modified')
+@check
+def test() -> None:
+    print('Now this is the Test Function')
 
-modified_func=check(modified_func) # ? This is active form of the Decorder function in python # 1
+# now this will be easy and nice way to do the things as in why.py
+print('object id: ',test) # ? this will execute the function check and prints the object id returned by the check()
 
-modified_func()
+test() # ! this will not execut the contents of the check() but executes the function returned by it
 
-@check # ? this is shorthand repr. of #1
-def anotherfunc():
-    print('another modifed function')
-anotherfunc()

@@ -4,6 +4,7 @@ class server():
         HOST='127.0.1.1'
         port=65432
         with socket.socket(socket.AF_INET,socket.SOCK_STREAM) as s:
+            # ? bind() is used to bind the current program with the given HOST ip address and 'port' as port number
             s.bind((HOST,port))
             s.listen()
             conn,addr=s.accept()
