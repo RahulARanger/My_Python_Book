@@ -1,9 +1,0 @@
-
-
-! we can't parse a log file using the logging module.
-
- TODO: we can either download some external modules for that refer: https://stackoverflow.com/questions/16017419/python-read-log-files-and-get-lines-containing-specific-words
-
- TODO: Else: we can also use the regex module to extract CERTAIN FILES 
-
-! using regex is not the global solution but it can work with min costs and efficiently
