@@ -1,2 +1,0 @@
-Here's the link for the more predefined classes and variables
-         in the classes: https://diveintopython3.net/special-method-names.html

@@ -1,6 +1,6 @@
 import logging
 
-# Refer this for more attributes: https://docs.python.org/3/library/logging.html#logrecord-attributess
+# Refer this for more attributes: https://docs.python.org/3/library/logging.html#logrecord-attributes
 logging.basicConfig(level=logging.DEBUG, filename="basics.log", format="%(levelname)s: %(asctime)s => %(message)s")
 
 # we can also control the formats for the log file

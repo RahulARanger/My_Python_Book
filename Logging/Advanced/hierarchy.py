@@ -8,6 +8,8 @@ print(custom2.parent, custom2.propagate)  # returns some value
 
 custom1_handler = logging.FileHandler("test1.log", "a")
 custom2_handler = logging.StreamHandler(sys.stdout)
+# when uncommented child wont be able to contact with the parent
+# custom2.propagate = False
 
 custom1.addHandler(custom1_handler)
 custom2.addHandler(custom2_handler)
