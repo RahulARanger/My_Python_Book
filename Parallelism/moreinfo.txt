@@ -1,8 +1,0 @@
-refer this: https://medium.com/swift-india/concurrency-parallelism-threads-processes-async-and-sync-related-39fd951bc61d
-
-Refer This Too:
-
-* https://realpython.com/python-concurrency/
-* https://hackernoon.com/threaded-asynchronous-magic-and-how-to-wield-it-bba9ed602c32
-* https://realpython.com/python-concurrency/
-* https://stackoverflow.com/questions/18114285/what-are-the-differences-between-the-threading-and-multiprocessing-modules
