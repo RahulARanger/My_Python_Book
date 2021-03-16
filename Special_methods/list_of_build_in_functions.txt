@@ -1,3 +1,0 @@
-This is the Link which has the list of the Python's built in functions: 
-
-                                * https://docs.python.org/3/library/functions.html

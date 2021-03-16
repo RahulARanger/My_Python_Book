@@ -1,9 +1,0 @@
-Itertools is one of the module in python.It helps in working with iterators easily and efficiently
-
-There are lot of operator functions in operator module 
-check this out: https://docs.python.org/2/library/operator.html
-
-iterators are of three types : 
-   * infinite iterators
-   * terminating iterators
-   * combinatoric iterators
