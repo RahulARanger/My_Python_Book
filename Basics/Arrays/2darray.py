@@ -1,12 +1,19 @@
-from numpy import*
-n,m=int(input()),int(input())
-liste=[]
-for i in range(n):
-    for j in range(m):
-        liste.append(int(input()))
-arr=array(liste)
-arr=reshape(arr,(3,3))
-for i in range(len(arr)):
-    for j in range(len(arr[i])):
-        print(arr[i][j],end=' ')
-    print()              
+array = []
+
+rows, cols = [int(_) for _ in input().split()]
+
+for _ in range(rows):
+    array.append([int(__) for __ in input().split()])
+
+for _ in range(rows):
+    for __ in range(cols):
+        print(array[_][__], end=' ')
+    print()
+
+""" 
+Test case:
+3 3
+1 2 3
+4 5 6
+7 8 9
+"""
