@@ -1,7 +1,9 @@
 class Truth(Exception):
-    def __init__(self,msg):
-        modified=msg+' jaani Katsura da'
+    def __init__(self, msg):
+        modified = msg + ' jaani Katsuya da'
         super().__init__(modified)
-urhomiename=input('Enter your Homie Name: ')
-if urhomiename.lower()!='Katsura'.lower():
-    raise Truth(urhomiename)
+
+
+name = input('Enter your Homie Name: ')
+if name.lower() != 'Katsura'.lower():
+    raise Truth(name)
