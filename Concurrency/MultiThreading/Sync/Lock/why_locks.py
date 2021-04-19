@@ -1,3 +1,5 @@
+#   RACE CONDITION
+# ------------------
 import threading
 import time
 
@@ -8,7 +10,7 @@ def test_this():
     print("message")
 
 
-note = [threading.Thread(target=test_this) for _ in range(2)]
+note = [threading.Thread(target=test_this) for _ in range(6)]
 [_.start() for _ in note]
 
 
@@ -42,8 +44,8 @@ and then prints the /n after that (see many blank lines)
 Goal:
 -----
 
-When they are multiple threads trying to access global parameters like print() (especially when they are modfying it)
+When they are multiple threads trying to access global parameters like print() (especially when they are modifying it)
 
-They need to wait until the thread that's using it finishes it's job.s
+They need to wait until the thread that's using it finishes it's job.
 
 """

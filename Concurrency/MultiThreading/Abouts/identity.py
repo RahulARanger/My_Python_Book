@@ -16,7 +16,7 @@ def know_it():
 note = threading.Thread(target=know_it, name="checking")
 note2 = threading.Thread(target=know_it, name="checking")
 
-print(f"{note.name}: {note.ident}, {note2.name}: {note2.ident}")
+print(f"{note.name}: {note.ident}, {note2.name}: {note2.ident}")  # ident would be None if the  thread was not started
 note.start()
 note2.start()
 # print(note.ident) same as the last line

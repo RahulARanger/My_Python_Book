@@ -1,5 +1,13 @@
 import threading
 
+"""
+Note:
+
+1. we may forget to release the lock which results another threads which is like the infinite loop
+
+2. when there's exception, it would also result the same so try to handle the exception caused inside the locked area
+"""
+
 
 def check_this():
     lock.acquire()

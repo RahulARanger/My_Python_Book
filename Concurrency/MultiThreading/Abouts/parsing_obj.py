@@ -1,5 +1,4 @@
 import threading
-import time
 
 
 def parse_obj():

@@ -1,8 +1,10 @@
 import threading
 
 
+# good lock practices
+
 def check_this():
-    with lock:  # context switching is recommded
+    with lock:  # context switching is recommended
         a, b = 1, 0
         print("locked")
         try:

@@ -1,5 +1,6 @@
 import threading
 import time
+from socket import timeout
 
 office_safety = threading.Lock()
 counter_safety = threading.Lock()
@@ -17,31 +18,36 @@ and they will have to go to the DB room which is locked since it's being occupie
 
 
 def office(name, register=False):
+    global office_safety, office_safety
+    
+    office_safety.acquire(timeout=0.01)
     print(f'{name} has entered the office')
-    with office_safety:
-        if register:
-            print(f"creating the new entry for {name}")
-            time.sleep(3)
+    if register:
+        print(f"creating the new entry for {name}")
+        time.sleep(3)
 
-            print(f"waiting for the counter to be available")
-            while counter_safety.locked():
-                pass
+        print(f"waiting for the counter to be available")
+        while counter_safety.locked():
+            pass
 
-        else:
-            print(f"updating the Database for {name} as vaccinated")
+    else:
+        print(f"updating the Database for {name} as vaccinated")
 
-        print(f"{name} has left the office")
+    print(f"{name} has left the office")
+    office_safety.release()
 
 
 def counter(name):
-    with counter_safety:
-        print(f"{name} has entered the counter")
-        print(f"vaccinating {name}")
-        time.sleep(6)
-        print("waiting for the office to be available")
-        while office_safety.locked():
-            pass
-        print(f"{name} has left the counter")
+    global office_safety, office_safety
+    counter_safety.acquire()
+    print(f"{name} has entered the counter")
+    print(f"vaccinating {name}")
+    time.sleep(6)
+    print("waiting for the office to be available")
+    while office_safety.locked():
+        pass
+    print(f"{name} has left the counter")
+    counter_safety.release()
 
 
 def hospital(name, registered=False):

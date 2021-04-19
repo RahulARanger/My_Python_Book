@@ -7,7 +7,7 @@ def test_this():
     # print(f"thread entered: {threading.currentThread().name}")
     lock.acquire()
     print("some")
-    time.sleep(0.100)
+    time.sleep(0.100)  # some other process
     print("message")
     lock.release()
 
