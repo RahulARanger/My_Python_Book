@@ -1,63 +1,59 @@
 import threading
 import time
-from socket import timeout
 
 office_safety = threading.Lock()
 counter_safety = threading.Lock()
 
-# this is an example for the bad lock practices
-
-
 '''
+as u can say we have to modify some parts in order to use this timeout solution
 
-Here when the unregistered patient walks in then they go to db (locks save_db)
-and meantime when the registered patient walks in he/ she goes to the counter for vaccination 
-and they will have to go to the DB room which is locked since it's being occupied by the unregistered patient
+but this doesn't solve the actual problem since the unregistered patient meets the registered patient in the counter
 
+which is not good 
 '''
-
 
 def office(name, register=False):
-    global office_safety, office_safety
+    if not office_safety.acquire(timeout=0.04):  
+        print(f"{name} waiting for the office to be available")
     
-    office_safety.acquire(timeout=0.01)
     print(f'{name} has entered the office')
+    
     if register:
         print(f"creating the new entry for {name}")
         time.sleep(3)
 
-        print(f"waiting for the counter to be available")
-        while counter_safety.locked():
-            pass
-
+        counter(name)
     else:
         print(f"updating the Database for {name} as vaccinated")
 
     print(f"{name} has left the office")
-    office_safety.release()
+    
+    if office_safety.locked():
+        office_safety.release()
 
 
 def counter(name):
-    global office_safety, office_safety
-    counter_safety.acquire()
+    if not counter_safety.acquire(timeout=0.07):  # waits until the patient gets vaccinated
+        print(f"{name} is waiting for the office to be available")
+        
     print(f"{name} has entered the counter")
     print(f"vaccinating {name}")
+    
     time.sleep(6)
-    print("waiting for the office to be available")
-    while office_safety.locked():
-        pass
+    
     print(f"{name} has left the counter")
-    counter_safety.release()
+    
+    if counter_safety.locked():
+        counter_safety.release()
+        
+    office(name, False)
 
 
 def hospital(name, registered=False):
     if registered:
         counter(name)
-        office(name, False)
     else:
         office(name, True)
-        counter(name)
-
 
 unregistered_patient = threading.Thread(target=hospital, args=("Mr W", False))
 registered_patient = threading.Thread(target=hospital, args=("Mr X", True))
