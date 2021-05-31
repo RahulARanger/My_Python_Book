@@ -1,3 +1,0 @@
-TODO: This is the link for the website which has the syntax highlighting tips for the jupyter markdown cells
-
- * Link: https://medium.com/ibm-data-science-experience/markdown-for-jupyter-notebooks-cheatsheet-386c05aeebed

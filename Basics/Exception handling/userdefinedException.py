@@ -1,6 +1,6 @@
 class Truth(Exception):
     def __init__(self, msg):
-        modified = msg + ' jaani Katsuya da'
+        modified = msg + ' jaani Katsura da'
         super().__init__(modified)
 
 
