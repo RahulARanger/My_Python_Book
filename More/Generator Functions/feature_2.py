@@ -1,6 +1,7 @@
 # This tries to prove that yield dominates return
 
 def check():
+    print("Print is now executed")
     n = 0
 
     while True:
@@ -14,6 +15,9 @@ def check():
 
 collect = check()
 print(type(collect))
+
+# generator function starts executing when it's iterated
+
 for _ in range(8):
     try:
         print(next(collect))
