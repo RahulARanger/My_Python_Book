@@ -5,9 +5,13 @@ NOTE = []
 
 
 def some_process():
+    # I-O bound process
+    # GIL allows parallel execution of threads for I-O bound processes
+
     global NOTE
+    NOTE.append(threading.current_thread().name)
     time.sleep(1)
-    return NOTE.append(threading.current_thread().name)
+    NOTE.append(str(threading.current_thread().name) + " done")
 
 
 def redo_that():
@@ -16,11 +20,17 @@ def redo_that():
         temp = threading.Thread(target=some_process)
         temp.start()
         tempo.append(temp)
-    [_.join() for _ in tempo]   # waits for the threads to finish
 
+    [_.join() for _ in tempo]  # waits for the threads to finish
+
+
+# thing is that when one thread sleeps, cpu just executes another thread
+# very useful when the work has no relation among them
+# if they had relation, we need to learn more to synchronize them
 
 note1 = time.time()
 redo_that()
+print("over?")
 note2 = time.time()
 print("Verification for the multithreading", NOTE)
 NOTE.clear()
