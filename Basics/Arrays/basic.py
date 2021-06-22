@@ -7,15 +7,17 @@ import array
 note = array.array('i', [1, 2, 3])
 print(note)
 note.append(4)
+
 try:
     note.append("check")
 except TypeError:
     print("will be an error")
 
 note.extend(range(100))
+
 print(note.count(2))  # for counting the occurrence of the element 2
-print(note.typecode)
-print(note.itemsize)
+print(note.typecode)  # type of the array
+print(note.itemsize)  # space occupied by each element
 
 print(note.buffer_info())  # tuple of the address and the length of the array
 
