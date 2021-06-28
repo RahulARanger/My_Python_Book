@@ -4,18 +4,20 @@ import array
 import time
 
 def filter_dup(test):
-    container = [test[0]]
+    index = 1
     
     for _ in range(1, len(test)):
-        container.append(test[_]) if test[_ - 1] != test[_] else None
+        if test[_] != test[_ - 1]:
+            test[index] = test[_]
+            index += 1
+        
+    return index
     
-    return container
-
-
 
 sample = array.array('i', sorted([int(_) for _ in input("Enter some numbers: ").split()]))
+
 print(
-    filter_dup(sample)
+    sample[: filter_dup(sample)]
 )
 
 sample1 = sorted(list(range(10 ** 3)) + list(range(10 ** 3)))

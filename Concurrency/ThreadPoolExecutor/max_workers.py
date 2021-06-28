@@ -13,3 +13,4 @@ sample.submit(work)
 sample.submit(work)
 
 sample.submit(work)  # this waits for the queue to end
+print("waiting over!")  # we don't have to wait for the submit
