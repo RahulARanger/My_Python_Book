@@ -12,5 +12,6 @@ while True:
             print('Invalid input')
         else:
             break
+
 print('Maximum is', large)
 print('Minimum is', small)
