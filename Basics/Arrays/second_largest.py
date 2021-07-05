@@ -1,13 +1,14 @@
 import array
 
 def second_largest(test):
-    main, second = None, None
+    main, second = test.index(max(test)), None
     
     for _ in range(len(test)):
-        main = main if main else test[_]
         
-        main, second = (test[_], main) if test[_] > main else (main ,second)  
-        # changing to >= will return same largest element if they have many max elements
+        if _ == main:
+            continue
+            
+        second = _ if second is None else second if test[second] > test[_] else _
     
     return second
 

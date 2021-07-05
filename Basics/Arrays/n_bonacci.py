@@ -20,5 +20,3 @@ def n_bonacci(n, m):
 
 print(n_bonacci(2, 10))
 print(n_bonacci(5, 15))
-    
-    
