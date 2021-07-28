@@ -9,19 +9,20 @@ def b_search(test, key):
     left = 0
     right = length - 1
     
-    while right > left:
+    while left <= right:
         mid = left + right
         mid //= 2
         
         if test[mid] == key:
             return True, mid
-        
+    
         if test[mid] > key:
-            right = mid 
+            right = mid - 1
+        
         else:
             left = mid + 1
     
-    return test[right] == key, left
+    return False, left
 
 print(b_search(array.array('i', [10, 20, 30, 40, 50, 60]), 20))
 print(b_search(array.array('i', [5, 15, 30]), 55))
