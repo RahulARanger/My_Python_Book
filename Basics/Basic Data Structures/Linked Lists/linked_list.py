@@ -56,7 +56,10 @@ class SingleNode:
         temp = self.next
         store = self.value
         
-        self.value, self.next = (temp.value, temp.next) if temp else (None, None)
+        if temp:
+            self.value, self.next = temp.value, temp.next
+        else:
+            del self
         return SingleNode(store)
 
     def delete_last(self):
