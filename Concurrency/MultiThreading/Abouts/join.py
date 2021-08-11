@@ -2,6 +2,8 @@ import threading
 import time
 
 
+# waits until the thread finishes it's work
+
 def work_1():
     print("Working...")
     time.sleep(2)
