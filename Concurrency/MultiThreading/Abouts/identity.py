@@ -1,25 +1,19 @@
 import threading
 import time
 
+sample = threading.Thread(target=time.sleep, args=(1,), name="demo")
+sample2 = threading.Thread(target=time.sleep, args=(1,))
+print(sample.ident)  # will be none before starting it
 
-# ident stores the identity of the Thread, it is None before the Thread starts. but after it starts,
-# it will be of some value
+print(sample.name, sample2.name)
 
-# All running Threads has unique identity value. they may have the same name
+sample.start()
+sample2.start()
 
-def know_it():
-    print("you are inside a thread")
-    time.sleep(3)
-    print("exiting the thread")
+print(sample.ident, sample2.native_id)  # note this values will get recycled after this thread dies
 
+sample.join()
+sample2.join()
 
-note = threading.Thread(target=know_it, name="checking")
-note2 = threading.Thread(target=know_it, name="checking")
-
-print(f"{note.name}: {note.ident}, {note2.name}: {note2.ident}")  # ident would be None if the  thread was not started
-note.start()
-note2.start()
-# print(note.ident) same as the last line
-note.join()
-note2.join()
-print(f"{note.name}: {note.ident}, {note2.name}: {note2.ident}")  # works as same as note2.get_indent()
+print(threading.get_ident(), threading.get_native_id())  # for current thread
+# i guess both are same, heard second one is given by os and first one is like index in dict
