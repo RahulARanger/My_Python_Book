@@ -1,6 +1,7 @@
 import threading
 import time
-check = threading.Lock()
+
+SAFE = threading.Lock()
 
 '''
 timeout is the argument for the acquire method of the lock, it takes float value(in millie seconds)
@@ -13,19 +14,17 @@ default value for the timeout is -1 (make the waiting thread for infinite amount
 
 '''
 
-def checking():
-    print(f"{threading.currentThread().name} has entered")
-    
-    check.acquire(timeout=0.01)  # time out is 1 sec
-    
-    print(f"{threading.currentThread().name} has acquired the lock")
-    time.sleep(3)  
-    
-normal_thread = threading.Thread(target=checking, name='first thread')
-waiting_thread = threading.Thread(target=checking, name='last thread')
-normal_thread.start()
-waiting_thread.start()
 
-normal_thread.join()
-waiting_thread.join()
-print(check.locked())  # proof of why timeout doesn't unlock if there are no waiting threads
+def sample():
+    tried = SAFE.acquire(timeout=2)  # returns False if timeout expires
+
+    if not tried:
+        print(threading.currentThread(), "can't wait no more!")
+        return
+
+    print(threading.currentThread(), "preparing noodles")
+    time.sleep(3)  # 3-minute noodles
+
+
+for _ in range(2):
+    threading.Thread(None, sample).start()
