@@ -13,17 +13,14 @@ class Parsing:
             self.safe.notifyAll()
 
     def ask(self):
-        with self.safe:
-            print("waiting", threading.currentThread())
-
-            print(self.safe.wait())
-
-            print("done", threading.currentThread())
+        print("waiting", threading.currentThread())
+        self.safe.wait()
+        print("done", threading.currentThread())
 
 
 sample = Parsing()
 
-threading.Thread(None, sample.parse).start()
+threading.Thread(None, sample.parse, name="pro").start()
 
 for _ in range(3):
-    threading.Thread(None, sample.ask).start()
+    threading.Thread(None, sample.ask, name=str(_)).start()

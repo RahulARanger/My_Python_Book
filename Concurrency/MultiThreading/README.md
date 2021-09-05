@@ -3,7 +3,7 @@
 * **used for creating high level threads**
 * **we can also create `Lock`**
 
-* Major Problems faced while using mult-threading is mostly due to synchronization.
+* Major Problems faced while using multi-threading is mostly due to synchronization.
 * some problems like DeadLocks, Race Condition are also mentioned
 
 ## References
