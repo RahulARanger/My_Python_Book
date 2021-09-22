@@ -1,21 +1,23 @@
 from linked_list import SingleNode
 
+
 def last_th(test: SingleNode, k):
     store = None
-    
+
     for _ in range(k):
         test = test.next if test else None
-    
+
     store = test
-    
+
     while test:
-    
+
         for _ in range(k + 1):
             test = test.next if test else None
-            
+
         store = test if test else store
-    
+
     return store
+
 
 Sample1 = SingleNode()
 

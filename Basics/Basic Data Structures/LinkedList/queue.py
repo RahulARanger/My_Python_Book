@@ -1,10 +1,4 @@
-import sys
-import os
-
-sys.path.remove(__file__) if __file__ in sys.path else None
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-
-from LinkedList.linked_list import DoubleNode
+from linked_list import DoubleNode
 
 # follows FIFO, first in first out
 class Queue:
@@ -32,14 +26,20 @@ class Queue:
         if not self.head:
             return None
 
-        self.head.delete_this()
+        store = self.head
         self.head = self.head.next
 
         if not self.head:
             self.tail = None
 
+        return store.value
+
     def __str__(self):
         return str(self.head)
+
+    def front(self):
+        """[summary] returns the first element of the queue"""
+        return self.head.value if self.head else None
 
 
 if __name__ == "__main__":

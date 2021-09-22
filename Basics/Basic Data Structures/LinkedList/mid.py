@@ -3,6 +3,7 @@ from linked_list import SingleNode
 
 # find the mid point of the singly linked list
 
+
 def mid(test: "SingleNode"):
     speed = test
 

@@ -1,16 +1,18 @@
 from linked_list import SingleNode
 
+
 def reverse_list(test):
     prev = None
-        
+
     while test:
         temp = prev
-        
+
         prev = test
         test = test.next
         prev.next = temp
-    
+
     return prev
+
 
 Sample1 = SingleNode()
 
