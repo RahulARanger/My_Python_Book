@@ -214,6 +214,13 @@ class DoubleNode(SingleNode):
 
         return temp.value
 
+    def add_next(self, node: "DoubleNode"):
+        actual = self.next
+        self.next = node
+        node.prev = self
+        node.next = actual
+        actual.prev = node
+
 
 class CircularNode:
     def __init__(self, value=None):
