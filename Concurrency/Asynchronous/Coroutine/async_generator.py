@@ -20,6 +20,4 @@ async def do_manual():
     test = sample()
 
 
-
-
 asyncio.run(do_test())
