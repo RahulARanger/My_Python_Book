@@ -1,1 +1,0 @@
-TODO: To know more about buttons please refer http://effbot.org/tkinterbook/button.htm
